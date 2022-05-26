@@ -14,7 +14,7 @@ const getSalesById = async (req, res) => {
     return res.status(404).json({ message: 'Sale not found' });
   }
 
-   res.status(200).json(sales[0]);
+   res.status(200).json(sales);
 };
 
 module.exports = {
