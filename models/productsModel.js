@@ -14,7 +14,15 @@ const getProductsById = (id) => {
     return products;
 };
 
+const createProduct = (name, quantity) => {
+    const products = connection.execute(
+        'INSERT INTO StoreManager.products(name, quantity) VALUES(?,?)', [name, quantity],
+    );
+    return products;
+};
+
 module.exports = {
     getAllProducts,
     getProductsById,
+    createProduct,
 };

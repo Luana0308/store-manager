@@ -12,7 +12,14 @@ const getAllProducts = () => {
     return products;
   };
 
+  const createProduct = (name, quantity) => {
+    const products = product.createProduct(name, quantity);
+
+    return products;
+  };
+
 module.exports = {
     getAllProducts,
     getProductsById,
+    createProduct,
 };
