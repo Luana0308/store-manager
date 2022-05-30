@@ -25,6 +25,7 @@ const updateProduct = (name, quantity, id) => {
     const products = connection.execute(
         'UPDATE products SET name = ? , quantity = ? WHERE id = ?', [name, quantity, id],
         );
+  
     return products; 
 };
 
