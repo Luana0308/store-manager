@@ -18,8 +18,14 @@ const getAllProducts = () => {
     return products;
   };
 
+  const updateProduct = (name, quantity, id) => {
+    const products = product.updateProduct(name, quantity, id);
+    return products; 
+  };
+
 module.exports = {
     getAllProducts,
     getProductsById,
     createProduct,
+    updateProduct, 
 };
