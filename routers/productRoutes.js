@@ -6,11 +6,13 @@ const { validateQuantity } = require('../middlewares/validateQuantity');
 const { getAllProducts, 
         getProductsById, 
         createProduct, 
-        updateProduct } = require('../controllers/productController');
+        updateProduct, 
+        deleteProduct } = require('../controllers/productController');
 
 router.get('/:id', getProductsById);
 router.get('/', getAllProducts);
 router.post('/', validateName, validateQuantity, createProduct);
 router.put('/:id', validateName, validateQuantity, updateProduct);
+router.delete('/:id', deleteProduct);
 
 module.exports = router;

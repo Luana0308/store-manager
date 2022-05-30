@@ -23,9 +23,15 @@ const getAllProducts = () => {
     return products; 
   };
 
+  const deleteProduct = (id) => {
+    const products = product.deleteProduct(id);
+    return products;
+  };
+
 module.exports = {
     getAllProducts,
     getProductsById,
     createProduct,
     updateProduct, 
+    deleteProduct, 
 };

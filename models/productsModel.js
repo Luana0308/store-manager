@@ -23,10 +23,16 @@ const createProduct = (name, quantity) => {
 
 const updateProduct = (name, quantity, id) => {
     const products = connection.execute(
-        'UPDATE products SET name = ? , quantity = ? WHERE id = ?', [name, quantity, id],
+        'UPDATE products SET name = ? , quantity = ? WHERE id = ?', 
+        [name, quantity, id],
         );
   
     return products; 
+};
+
+const deleteProduct = (id) => {
+    const products = connection.execute('DELETE FROM products WHERE id = ?', [id]);
+    return products;
 };
 
 module.exports = {
@@ -34,4 +40,5 @@ module.exports = {
     getProductsById,
     createProduct,
     updateProduct,
+    deleteProduct,
 };
