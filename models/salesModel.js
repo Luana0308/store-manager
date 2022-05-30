@@ -19,7 +19,23 @@ const getSalesById = (id) => {
     return salesId;
 };
 
+const createSales = () => {
+    const createSale = connection.execute('INSERT INTO sales VALUES ()');
+    return createSale;
+};
+
+const createSalesProducts = (saleId, productId, quantity) => {
+    const createSaleProduct = connection.execute(
+        'INSERT INTO sales_products(sale_id, product_id, quantity) VALUES(?, ?, ?)', 
+        [saleId, productId, quantity],
+    );
+    
+    return createSaleProduct;
+};
+
 module.exports = {
     getAllSales,
     getSalesById,
+    createSales,
+    createSalesProducts,
 };
