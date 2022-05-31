@@ -12,20 +12,21 @@ const getAllSales = () => {
     return salesId;
   };
 
-  const createSales = () => {
-    const createSale = salesModel.createSales();
-    return createSale;
-};
+const createSalesProducts = async (saleArray) => {
+  const [saleId] = await salesModel.createSales();
 
-const createSalesProducts = (saleId, productId, quantity) => {
-    const createSaleProduct = salesModel.createSalesProducts(saleId, productId, quantity);
-    
-    return createSaleProduct;
+  saleArray.map((element) => 
+    salesModel.createSalesProducts(saleId.insertId, element.productId, element.quantity));
+
+  const saleProduct = {
+    id: saleId.insertId,
+    itemsSold: saleArray,
+  };
+  return saleProduct;
 };
 
 module.exports = {
     getAllSales,
     getSalesById,
-    createSales,
     createSalesProducts,
 };
