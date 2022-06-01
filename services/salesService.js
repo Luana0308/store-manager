@@ -25,8 +25,14 @@ const createSalesProducts = async (saleArray) => {
   return saleProduct;
 };
 
+const updateSales = async ({ id, productId, quantity }) => {
+ const sale = await salesModel.updateSales(id, productId, quantity);
+ return sale; 
+};
+
 module.exports = {
     getAllSales,
     getSalesById,
     createSalesProducts,
+    updateSales,
 };

@@ -23,7 +23,7 @@ const createProduct = (name, quantity) => {
 
 const updateProduct = (name, quantity, id) => {
     const products = connection.execute(
-        'UPDATE products SET name = ? , quantity = ? WHERE id = ?', 
+        'UPDATE StoreManager.products SET name = ? , quantity = ? WHERE id = ?', 
         [name, quantity, id],
         );
   
@@ -31,7 +31,7 @@ const updateProduct = (name, quantity, id) => {
 };
 
 const deleteProduct = (id) => {
-    const products = connection.execute('DELETE FROM products WHERE id = ?', [id]);
+    const products = connection.execute('DELETE FROM StoreManager.products WHERE id = ?', [id]);
     return products;
 };
 

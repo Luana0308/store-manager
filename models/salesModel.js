@@ -20,17 +20,25 @@ const getSalesById = (id) => {
 };
 
 const createSales = () => {
-    const createSale = connection.execute('INSERT INTO sales VALUES ()');
+    const createSale = connection.execute('INSERT INTO StoreManager.sales VALUES ()');
     return createSale;
 };
 
 const createSalesProducts = (saleId, productId, quantity) => {
     const createSaleProduct = connection.execute(
-        'INSERT INTO sales_products(sale_id, product_id, quantity) VALUES(?, ?, ?)', 
+        'INSERT INTO StoreManager.sales_products(sale_id, product_id, quantity) VALUES(?, ?, ?)', 
         [saleId, productId, quantity],
     );
     
     return createSaleProduct;
+};
+
+const updateSales = (saleId, productId, quantity) => {
+    const updateSale = connection.execute(
+        'UPDATE StoreManager.sales_products SET quantity = ? WHERE sale_id = ? AND product_id = ?', 
+        [quantity, saleId, productId],
+    );
+    return updateSale;
 };
 
 module.exports = {
@@ -38,4 +46,5 @@ module.exports = {
     getSalesById,
     createSales,
     createSalesProducts,
+    updateSales,
 };
