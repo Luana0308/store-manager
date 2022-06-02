@@ -41,16 +41,10 @@ const updateSales = (saleId, productId, quantity) => {
     return updateSale;
 };
 
-const deleteSales = (id) => {
-    const products = connection.execute('DELETE FROM StoreManager.sales WHERE id = ?', [id]);
-    return products;
-};
-
 module.exports = {
     getAllSales,
     getSalesById,
     createSales,
     createSalesProducts,
     updateSales,
-    deleteSales,
 };
