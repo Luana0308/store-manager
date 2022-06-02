@@ -44,7 +44,7 @@ const deleteSales = async (req, res) => {
   }
 
   await salesService.deleteSales(id);
-  res.status(204).send();
+  res.status(204).end();
 };
 
 module.exports = {
