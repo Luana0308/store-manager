@@ -77,45 +77,46 @@ const ProductsService = require('../../../services/productsService');
       })
     });
 
-    // describe('createProduct',() => {
-    //   const response = {}
-    //   const request = {};
+    describe('createProduct',() => {
+      const response = {}
+      const request = {};
 
-    // before(() => {
-    //   request.body = {
-    //     "name": "Armadura Homen de ferro",
-    //     "quantity": 30
-    // };
+    before(() => {
+      request.body = {
+        "name": "Armadura Homem de ferro",
+        "quantity": 30
+    };
 
-    //   response.status = sinon.stub()
-    //     .returns(response);
-    //   response.json = sinon.stub()
-    //     .returns(response);
+      response.status = sinon.stub()
+        .returns(response);
+      response.json = sinon.stub()
+        .returns(response);
 
-    //   sinon.stub(ProductsService, 'createProduct')
-    //     .resolves([{
-    //       "id": 4,
-    //       "name": "Armadura Homen de ferro",
-    //       "quantity": 30
-    //   }]);
-    // })
+      sinon.stub(ProductsService, 'createProduct')
+        .resolves([{
+          "insertId": 4,
+          "name": "Armadura Homem de ferro",
+          "quantity": 30
+      }]);
+      sinon.stub(ProductsService, 'getAllProducts')
+        .resolves([[]]);
+    })
 
-    // after(() => {
-    //   ProductsService.createProduct.restore();
-    // });
-    //   it('verifica se o retorno é o da função é o status 201', async () => {
-    //       const expectedResult = {
-    //         "id": 4,
-    //         "name": "Armadura Homen de ferro",
-    //         "quantity": 30
-    //       }
-
-    //     await ProductsController.createProduct(request, response);
-
-    //     expect(response.status.calledWith(201)).to.be.equal(true);
-    //     // expect(response.json.calledWith(expectedResult)).to.be.equal(true);
-    //   })
-    // });
+    after(() => {
+      ProductsService.createProduct.restore();
+    });
+      it('verifica se o retorno é o da função é o status 201', async () => {
+        const resultExpected = {
+          "id": 4,
+          "name": 'Armadura Homem de ferro',
+          "quantity": 30
+      }
+         
+        await ProductsController.createProduct(request, response);
+        expect(response.status.calledWith(201)).to.be.equal(true);
+        sinon.assert.calledWith(response.json, sinon.match(resultExpected))
+      })
+    });
 
     describe('updateProduct', () => {
       
