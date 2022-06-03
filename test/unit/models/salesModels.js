@@ -90,5 +90,5 @@ describe('Sales Model Testes', () => {
             expect(response).to.be.an('object');
             expect(response).to.have.a.property('id');
         })
-    })
+    });
 });
