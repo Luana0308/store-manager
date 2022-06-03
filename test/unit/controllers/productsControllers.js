@@ -119,7 +119,43 @@ const ProductsService = require('../../../services/productsService');
     });
 
     describe('updateProduct', () => {
-      
+      const response = {}
+      const request = {};
+
+      before(() => {
+        request.params = { id: 1}
+        request.body = {
+          "name": "Martelo de Thor",
+          "quantity": 20
+        };
+
+        response.status = sinon.stub()
+          .returns(response);
+        response.json = sinon.stub()
+          .returns(response);
+
+        sinon.stub(ProductsService, 'updateProduct')
+          .resolves([{
+            "id": 1,
+            "name": "Martelo de Thor",
+            "quantity": 20
+        }]);
+        sinon.stub(ProductsService, 'getProductsById')
+          .resolves([[{
+            "id": 1,
+            
+        }]]);
+      });
+
+      after(() => {
+        ProductsService.updateProduct.restore();
+      });
+
+    it('verifica se possui o retorno de 200 e o objeto', async () => {
+
+        await ProductsController.updateProduct(request, response);
+        expect(response.status.calledWith(200)).to.be.equal(true);
+      });
     });
   });
 

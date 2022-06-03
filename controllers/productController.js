@@ -38,7 +38,7 @@ const updateProduct = async (req, res) => {
 
   const [products] = await product.getProductsById(id);
 
-  if (!products[0]) {
+  if (products.length === 0) {
     return res.status(404).json({ message: 'Product not found' });
   }
 
