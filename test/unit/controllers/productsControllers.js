@@ -117,8 +117,8 @@ const ProductsService = require('../../../services/productsService');
       })
     });
 
-    describe('', () => {
-
+    describe('updateProduct', () => {
+      
     });
   });
 
